@@ -10,7 +10,7 @@ body {
     justify-content: center;
     flex-direction: column;
     overflow: hidden;
-    background-color: rgb(109, 107, 104);
+    background-color: rgb(71, 71, 71);
 }
 
 .score {
@@ -20,7 +20,7 @@ body {
     align-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 48px;
-    color: aquamarine;
+    color: rgb(220, 200, 100);
 }
 
 .wrap {
@@ -45,9 +45,9 @@ body {
     border: 2px solid rgb(46, 45, 43);
     border-radius: 50%;
     transition-property: top, left;
-    transition-duration: 140ms;
+    transition-duration: 100ms;
     /*время замены плиток*/
-    animation: show 50ms;
+    animation: show 35ms;
     /*время падения и появления плиток*/
 }
 
@@ -73,29 +73,50 @@ body {
 }
 
 .tile1 {
-    background-color: #818b28;
+    background-color: rgb(66, 184, 131);
 }
 
 .tile2 {
-    background-color: #393296;
+    background-color: rgb(177, 70, 70);
 }
 
 .tile3 {
-    background-color: #270dbb;
+    background-color: rgb(43, 43, 177);
 }
 
 .tile4 {
-    background-color: #1f5e43;
+    background-color: rgb(158, 141, 58);
 }
 
 .tile5 {
-    background-color: #48205f;
+    background-color: rgb(144, 65, 175);
 }
 
 .tile6 {
-    background-color: #1f3f47;
+    background-color: rgb(141, 89, 38);
 }
 
 .tile7 {
-    background-color: #461b34;
+    background-color: rgb(18, 70, 70);
 }
+
+.healthPoint{
+    margin-top: 20px;
+    position: relative;
+    width: 90vmin;
+    height: 5vmin;
+    max-width: 500px;
+    max-height: 50px;
+    background-color: rgb(51, 206, 103);
+    border:  ridge #1f3f47 2px ;
+}
+
+.healthPoint::after { 
+    content: ''; 
+    position: absolute; 
+    top: 0; 
+    left: 50%; 
+    width: 50%; 
+    height: 100%; 
+    background-color: rgb(63, 66, 114); 
+  } 
