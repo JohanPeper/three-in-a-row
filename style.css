@@ -101,22 +101,23 @@ body {
 }
 
 .healthPoint{
-    margin-top: 20px;
-    position: relative;
-    width: 90vmin;
-    height: 5vmin;
-    max-width: 500px;
-    max-height: 50px;
-    background-color: rgb(51, 206, 103);
-    border:  ridge #1f3f47 2px ;
-}
-
-.healthPoint::after { 
-    content: ''; 
+    --amount: 100%; 
     position: absolute; 
     top: 0; 
-    left: 50%; 
-    width: 50%; 
+    right: calc(100% - var(--amount)); 
+    width: var(--amount); 
     height: 100%; 
+    background-color: rgb(51, 206, 103);
+}
+
+.healthPointBG { 
+    margin-top: 20px;
+    position: relative;
+    height: 5vmin;
+    width: 90vmin;
+    width: 90vmin;
+    max-width: 500px;
+    max-height: 50px;
     background-color: rgb(63, 66, 114); 
+    border:  ridge #1f3f47 2px ;
   } 
