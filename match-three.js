@@ -21,6 +21,7 @@ export class MatchThree {
         const swapStates = this.game.swap(firstElementPosition, secondElementPosition); // массив матриц до и после сборки ряда
         await this.grid.swap(firstElementPosition, secondElementPosition, swapStates);
         this.updateScore();
+        this.game.MonsterOne.takeDamage(this.game.score);
     }
 
     updateScore() {
