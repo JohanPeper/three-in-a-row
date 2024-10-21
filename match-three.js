@@ -1,6 +1,5 @@
 import { Game } from "./game.js";
 import { Grid } from "./grid.js";
-import { HealthPoint } from "./HealthPoint.js";
 
 //логика игры, логика рисования плиточек и здоровья
 
@@ -10,8 +9,6 @@ export class MatchThree {
     constructor(rowsCount, columnCount, titleCount) {
         this.game = new Game(rowsCount, columnCount, titleCount);
         this.grid = new Grid(this.wrap, this.game.matrix);
-        this.healthPoint = new HealthPoint;
-        this.healthPoint.healthPointDamage(5);
         this.wrap.addEventListener('swap', event => {
             const firstElementPosition = event.detail.firstElementPosition;
             const secondElementPosition = event.detail.secondElementPosition;

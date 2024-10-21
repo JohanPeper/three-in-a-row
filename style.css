@@ -23,12 +23,20 @@ body {
     color: rgb(220, 200, 100);
 }
 
+.container {
+    display: grid;
+    grid-template-areas: 'a c' 'b c';
+    width: 90vw;
+    justify-items: center;
+}
+
 .wrap {
     position: relative;
     width: 90vmin;
     height: 90vmin;
     max-width: 500px;
     max-height: 500px;
+    grid-area: a;
 }
 
 .tile {
@@ -100,7 +108,7 @@ body {
     background-color: rgb(18, 70, 70);
 }
 
-.healthPoint{
+.healthPointPlayer{
     --amount: 100%; 
     position: absolute; 
     top: 0; 
@@ -110,7 +118,7 @@ body {
     background-color: rgb(51, 206, 103);
 }
 
-.healthPointBG { 
+.healthPointBGPlayer { 
     margin-top: 20px;
     position: relative;
     height: 5vmin;
@@ -120,4 +128,27 @@ body {
     max-height: 50px;
     background-color: rgb(63, 66, 114); 
     border:  ridge #1f3f47 2px ;
+    grid-area: b;
+  } 
+
+  .healthPointMonsterOne{
+    --amount: 100%; 
+    position: absolute; 
+    top: 0; 
+    right: calc(100% - var(--amount)); 
+    width: var(--amount); 
+    height: 100%; 
+    background-color: rgb(51, 206, 103);
+}
+
+.healthPointBGMonsterOne { 
+    position: relative;
+    height: 5vmin;
+    width: 90vmin;
+    width: 90vmin;
+    max-width: 500px;
+    max-height: 50px;
+    background-color: rgb(63, 66, 114); 
+    border:  ridge #1f3f47 2px ;
+    grid-area: c;
   } 

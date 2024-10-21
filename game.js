@@ -1,4 +1,6 @@
 import { deepClone } from "./utils.js";
+import { HealthPoint } from "./healthPoint.js";
+import { MonsterOne } from "./monsterOne.js";
 
 //игровая логика без отрисовки
 
@@ -9,6 +11,10 @@ export class Game {
         this.elementsCount = elementsCount;
 
         this.init();
+
+        this.healthPointPlayer = new HealthPoint ('Player');
+        this.healthPointPlayer.healthPointDamage(5);
+        this.MonsterOne = new MonsterOne (this.healthPointPlayer);
     }
 
     init() { // создание матрицы
