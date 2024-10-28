@@ -25,7 +25,7 @@ body {
 
 .container {
     display: grid;
-    grid-template-areas: 'a c' 'b c';
+    grid-template-areas: 'a c' 'b d';
     width: 90vw;
     justify-items: center;
 }
@@ -108,17 +108,17 @@ body {
     background-color: rgb(18, 70, 70);
 }
 
-.healthPointPlayer{
-    --amount: 100%; 
-    position: absolute; 
-    top: 0; 
-    right: calc(100% - var(--amount)); 
-    width: var(--amount); 
-    height: 100%; 
+.healthPointPlayer {
+    --amount: 100%;
+    position: absolute;
+    top: 0;
+    right: calc(100% - var(--amount));
+    width: var(--amount);
+    height: 100%;
     background-color: rgb(51, 206, 103);
 }
 
-.healthPointBGPlayer { 
+.healthPointBGPlayer {
     margin-top: 20px;
     position: relative;
     height: 5vmin;
@@ -126,29 +126,96 @@ body {
     width: 90vmin;
     max-width: 500px;
     max-height: 50px;
-    background-color: rgb(63, 66, 114); 
-    border:  ridge #1f3f47 2px ;
+    background-color: rgb(63, 66, 114);
+    border: ridge #1f3f47 2px;
     grid-area: b;
-  } 
+}
 
-  .healthPointMonsterOne{
-    --amount: 100%; 
-    position: absolute; 
-    top: 0; 
-    right: calc(100% - var(--amount)); 
-    width: var(--amount); 
-    height: 100%; 
+.healthPointMonsterOne {
+    --amount: 100%;
+    position: absolute;
+    top: 0;
+    right: calc(100% - var(--amount));
+    width: var(--amount);
+    height: 100%;
     background-color: rgb(51, 206, 103);
 }
 
-.healthPointBGMonsterOne { 
+.healthPointBGMonsterOne {
     position: relative;
     height: 5vmin;
     width: 90vmin;
     width: 90vmin;
     max-width: 500px;
     max-height: 50px;
-    background-color: rgb(63, 66, 114); 
-    border:  ridge #1f3f47 2px ;
+    background-color: rgb(63, 66, 114);
+    border: ridge #1f3f47 2px;
+    margin-top: 20px;
+    grid-area: d;
+}
+
+.monsterOneContainer {
+    position: relative;
     grid-area: c;
-  } 
+    height: 300px;
+    width: 300px;
+    max-height: 500px;
+    max-width: 500px;
+}
+
+.monsterOneShape {
+    height: 300px;
+    width: 300px;
+    max-height: 500px;
+    max-width: 500px;
+    background-image: url(./assets/skeletonArcherAppearanceSprite.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    animation: skeletonAppearance 0.25s steps(1) forwards;
+    margin-top: 150px;
+}
+
+@keyframes skeletonAppearance {
+    0% {
+        background-position: 100px;
+    }
+
+    100% {
+        background-position: -252px;
+    }
+}
+
+.monsterOneArrow{
+    position: absolute;
+    width: 135px;
+    height: 30px;
+    background-image: url(./assets/skeletonArcherArrow.png);
+    background-size: cover;
+    left: 85px;
+    top: 230px;
+    animation: shoot 0.5s linear forwards;
+    opacity: 0;
+}
+
+@keyframes shoot {
+    0%{
+        opacity: 1;
+    }
+    99%{
+        left:-250px;
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+.monsterOneShoot{
+    margin-top: 170px;
+    height: 280px;
+    background-image: url(./assets/skeletonArcherShoot.png);
+    animation: none;
+    background-size: contain;
+    background-position: 100px;
+}
