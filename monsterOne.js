@@ -3,6 +3,7 @@ import { DamageEffect } from "./damageEffect.js";
 
 export class MonsterOne {
     lastMoveCount = 0;
+    monsterOneDamageInterval = undefined; 
     constructor(player) {
         this.player = player;
         this.healthPoint = new HealthPoint('MonsterOne');
@@ -25,7 +26,7 @@ export class MonsterOne {
     }
 
     damagePlayer(amount, player) {
-        let monsterOneDamageInterval = setInterval(async () => {
+         this.monsterOneDamageInterval = setInterval(async () => {
             this.shoot();
             this.reload();
             player.damageEffect.reloadAnimation();
@@ -49,6 +50,10 @@ export class MonsterOne {
             this.healthPoint.healthPointDamage(damage);
             this.lastMoveCount = amount;
         }
+        if(this.healthPoint.currentHP <= 0){
+            this.dead();
+        }
+        this.dead();
     }
 
     async reload() {
@@ -68,5 +73,18 @@ export class MonsterOne {
         document.querySelector('.monsterOneArrow').getAnimations()[0].play();
     }
 
+   async dead() {
+        clearInterval(this.monsterOneDamageInterval);
+        this.monsterOneShape.classList.add('monsterOneDeath');
+        
+        do {
+           await this.sleep(50)
+            this.player.healthPointPlayer.healthPointHeal(1);
+        } 
+        while(this.player.healthPointPlayer.currentHP < 100);
+        await this.sleep(2000)
+        document.querySelector('.monsterOneContainer').remove();
+        document.querySelector('.healthPointBGMonsterOne').remove();
+    }
 
 }

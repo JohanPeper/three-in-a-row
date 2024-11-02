@@ -281,6 +281,26 @@ body {
     background-position: 100px;
 }
 
+.monsterOneDeath {
+    animation: skeletonDeath 0.4s linear forwards;
+}
+@keyframes skeletonDeath {
+    1%{
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 180px;
+        background-image: url(./assets/skeletonDeath1.png);
+
+    }
+    100%{
+        background-image: url(./assets/skeletonDeath2.png);
+        background-repeat: no-repeat;
+        background-size: 60%;
+        background-position: 180px 190px;
+    }
+
+}
+
 .damageEffect {
     width: 7vh;
     height: 7vh;
