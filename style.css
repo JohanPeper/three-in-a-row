@@ -168,6 +168,51 @@ body {
     grid-area: e;
 }
 
+.playerMagicAttack {
+    position: absolute;
+    width: 550px;
+    height: 45px;
+    background-image: url(./assets/magicAttack.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    top: 51.5%;
+    left: 100px;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: magicAttack 0.7s forwards;
+    z-index: 2;
+}
+
+@keyframes magicAttack {
+    0% {
+        opacity: 0;
+        transform: scaleX(0);
+        left: 170px;
+        clip-path: inset(0 100% 0 0);
+    }
+
+    70% {
+        opacity: 1;
+
+        left: 100px;
+    }
+
+    85% {
+        opacity: 0.5;
+    }
+
+    99% {
+        transform: scaleX(1);/* растягивание*/
+        clip-path: inset(0);/*появление*/
+    }
+
+    100% {
+        opacity: 0;
+
+    }
+}
+
 .monsterOneContainer {
     position: relative;
     grid-area: c;
@@ -252,23 +297,25 @@ body {
 }
 
 .damageEffectMonsterOne {
-    top:50%;
+    top: 50%;
     left: 170px;
     animation: damageEffect 1s ease-in-out forwards;
 }
 
-@keyframes damageEffect { 
-    0% { 
-      width: 0; 
-      height: 0; 
-      opacity: 0; 
-    } 
-    99% { 
-      width: 7vh;
-      height: 7hv; 
-      opacity: 1; 
+@keyframes damageEffect {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
     }
+
+    99% {
+        width: 7vh;
+        height: 7hv;
+        opacity: 1;
+    }
+
     100% {
         opacity: 0;
-    } 
-  } 
+    }
+}

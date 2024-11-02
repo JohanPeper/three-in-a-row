@@ -1,7 +1,7 @@
 import { Game } from "./game.js";
 import { Grid } from "./grid.js";
 
-//логика игры, логика рисования плиточек и здоровья
+//логика игры, логика рисования плиточек
 
 export class MatchThree {
     wrap = document.querySelector('.wrap');
@@ -13,6 +13,8 @@ export class MatchThree {
             const firstElementPosition = event.detail.firstElementPosition;
             const secondElementPosition = event.detail.secondElementPosition;
             this.swap(firstElementPosition, secondElementPosition);
+            this.game.MonsterOne.takeDamage(this.game.score);
+            this.game.player.reloadAttackAnimation(this.game.score);
         });
 
 
@@ -21,7 +23,6 @@ export class MatchThree {
         const swapStates = this.game.swap(firstElementPosition, secondElementPosition); // массив матриц до и после сборки ряда
         await this.grid.swap(firstElementPosition, secondElementPosition, swapStates);
         this.updateScore();
-        this.game.MonsterOne.takeDamage(this.game.score);
     }
 
     updateScore() {

@@ -35,7 +35,8 @@ export class MonsterOne {
 
     }
 
-    takeDamage(amount) {
+    async takeDamage(amount) {
+      await  this.sleep(500);
         if (this.lastMoveCount == 0) {
             this.lastMoveCount += amount;
             amount *= 2;

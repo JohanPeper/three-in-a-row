@@ -1,5 +1,4 @@
 import { deepClone } from "./utils.js";
-import { HealthPoint } from "./healthPoint.js";
 import { MonsterOne } from "./monsterOne.js";
 import { Player } from "./player.js";
 
@@ -13,8 +12,6 @@ export class Game {
 
         this.init();
 
-       /* this.healthPointPlayer = new HealthPoint ('Player');
-        this.healthPointPlayer.healthPointDamage(5);*/
         this.player = new Player();
         this.MonsterOne = new MonsterOne (this.player);
     }
