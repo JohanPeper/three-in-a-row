@@ -1,4 +1,5 @@
 import { HealthPoint } from "./healthPoint.js";
+import { DamageEffect } from "./damageEffect.js";
 
 export class MonsterOne {
     lastMoveCount = 0;
@@ -20,14 +21,16 @@ export class MonsterOne {
         this.monsterOneArrow.classList.add('monsterOneArrow');
         document.querySelector('.monsterOneContainer').append(this.monsterOneArrow);
         document.querySelector('.monsterOneArrow').getAnimations()[0].finish();
+        this.DamageEffect = new DamageEffect('MonsterOne'); 
     }
 
     damagePlayer(amount, player) {
         let monsterOneDamageInterval = setInterval(async () => {
             this.shoot();
             this.reload();
+            player.damageEffect.reloadAnimation();
             await this.sleep(500);
-            player.healthPointDamage(amount);
+            player.healthPointPlayer.healthPointDamage(amount);
         }, 5000);
 
     }
