@@ -13,7 +13,7 @@ export class Game {
         this.init();
 
         this.player = new Player();
-        this.monsterOne = new MonsterOne (this.player);
+        this.monsterOne = new MonsterOne (this.player, this.score);
     }
 
     init() { // создание матрицы
