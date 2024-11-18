@@ -2,12 +2,12 @@ import { HealthPoint } from "./healthPoint.js";
 import { DamageEffect } from "./damageEffect.js";
 
 export class MonsterOne {
-    
     monsterOneDamageInterval = undefined; 
     alive = true;
-    constructor(player, score) {
+    constructor(player, score, difficulty) {
         this.lastMoveCount = score;
         this.player = player;
+        this.difficulty = difficulty;
         this.healthPoint = new HealthPoint('MonsterOne');
         this.appearance();
         this.damagePlayer(5, this.player);
@@ -34,7 +34,12 @@ export class MonsterOne {
             player.damageEffect.reloadAnimation();
             await this.sleep(500);
             player.healthPointPlayer.healthPointDamage(amount);
-        }, 5000);
+            
+            if(player.healthPointPlayer.currentHP <= 0){
+                player.dead();
+                clearInterval(this.monsterOneDamageInterval);
+            }
+        }, this.difficulty);
 
     }
 
@@ -44,13 +49,14 @@ export class MonsterOne {
             this.lastMoveCount += amount;
             amount *= 2;
             this.healthPoint.healthPointDamage(amount);
-
+            this.DamageEffect.reloadAnimation();
         }
         else {
             let damage = amount - this.lastMoveCount;
             damage *= 2;
             this.healthPoint.healthPointDamage(damage);
             this.lastMoveCount = amount;
+            this.DamageEffect.reloadAnimation();
         }
         if(this.healthPoint.currentHP <= 0){
            await this.dead()
@@ -85,7 +91,7 @@ export class MonsterOne {
             this.player.healthPointPlayer.healthPointHeal(1);
         } 
         while(this.player.healthPointPlayer.currentHP < 100);
-        await this.sleep(2000)
+        await this.sleep(1500);
         document.querySelector('.monsterOneContainer').remove();
         document.querySelector('.healthPointBGMonsterOne').remove();
         this.alive = false;

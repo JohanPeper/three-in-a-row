@@ -22,4 +22,27 @@ export class Player {
             document.querySelector(`.playerMagicAttack`).getAnimations()[0].play();
         }
     }
+
+    sleep(ms) { // задержка для кода
+        return new Promise(resolve => setTimeout(resolve, ms))
+    }
+
+   async dead(){
+        document.querySelector('.playerShape').classList.add('playerDeath');
+        await this.sleep(3000);
+        this.deadMessage = document.createElement('div');
+        this.deadMessage.classList.add('deadMessage');
+        this.deadMessage.textContent = 'You Dead!';
+        document.querySelector('.container').append(this.deadMessage);
+        this.retryButton = document.createElement('button');
+        this.retryButton.classList.add('retryButton');
+        this.retryButton.textContent = 'Retry';
+        document.querySelector('.deadMessage').append(this.retryButton);
+        document.querySelector('.retryButton').addEventListener('click', this.reloadPage)
+    }
+
+    reloadPage(){
+        location.reload();
+    }
+
 }

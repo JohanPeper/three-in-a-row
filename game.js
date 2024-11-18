@@ -5,6 +5,7 @@ import { Player } from "./player.js";
 //игровая логика без отрисовки
 
 export class Game {
+    difficulty = 5000;
     constructor(rowsCount, columnsCount, elementsCount) {
         this.rowsCount = rowsCount; // сохраняем свойства для методов класса
         this.columnsCount = columnsCount;
@@ -13,7 +14,7 @@ export class Game {
         this.init();
 
         this.player = new Player();
-        this.monsterOne = new MonsterOne (this.player, this.score);
+        this.monsterOne = new MonsterOne (this.player, this.score, this.difficulty);
     }
 
     init() { // создание матрицы

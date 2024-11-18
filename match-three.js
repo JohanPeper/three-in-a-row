@@ -20,7 +20,7 @@ export class MatchThree {
                 this.nextMonster();
             }
         });
-
+        
 
     }
     async swap(firstElementPosition, secondElementPosition) {
@@ -34,10 +34,16 @@ export class MatchThree {
     }
 
     nextMonster() {
-        this.game.monsterOne = new MonsterOne(this.game.player, this.game.score);
+        this.game.difficulty *= 0.9;
+        this.game.monsterOne = new MonsterOne(this.game.player, this.game.score, this.game.difficulty);
     }
 
     sleep(ms) { // задержка для кода
         return new Promise(resolve => setTimeout(resolve, ms))
+    }
+
+    retryGame() {
+        this.game = new Game(rowsCount, columnCount, titleCount);
+        this.grid = new Grid(this.wrap, this.game.matrix);
     }
 }
