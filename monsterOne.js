@@ -91,7 +91,7 @@ export class MonsterOne {
             this.player.healthPointPlayer.healthPointHeal(1);
         } 
         while(this.player.healthPointPlayer.currentHP < 100);
-        await this.sleep(1500);
+        await this.sleep(500);
         document.querySelector('.monsterOneContainer').remove();
         document.querySelector('.healthPointBGMonsterOne').remove();
         this.alive = false;

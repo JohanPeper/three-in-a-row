@@ -1,6 +1,7 @@
 import { Game } from "./game.js";
 import { Grid } from "./grid.js";
 import { MonsterOne } from "./monsterOne.js";
+import { Music } from "./music.js";
 
 //логика игры, логика рисования плиточек
 
@@ -8,6 +9,7 @@ export class MatchThree {
     wrap = document.querySelector('.wrap');
 
     constructor(rowsCount, columnCount, titleCount) {
+        this.music = new Music();
         this.game = new Game(rowsCount, columnCount, titleCount);
         this.grid = new Grid(this.wrap, this.game.matrix);
         this.wrap.addEventListener('swap', async (event) => {
@@ -46,4 +48,5 @@ export class MatchThree {
         this.game = new Game(rowsCount, columnCount, titleCount);
         this.grid = new Grid(this.wrap, this.game.matrix);
     }
+    
 }
