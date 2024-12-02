@@ -7,6 +7,9 @@ export class Music {
     ];
     currentTrack = 0;
     constructor() {
+        this.audioElement.src = this.trackList[this.currentTrack];
+        this.audioElement.play();
+
         this.audioElement.addEventListener('ended', () => {
             this.currentTrack = (this.currentTrack + 1) % this.trackList.length;
             this.audioElement.src = this.trackList[this.currentTrack];
@@ -14,9 +17,10 @@ export class Music {
 
         });
         document.getElementById('clickable-area').addEventListener('click', () => {
-            this.audioElement.src = this.trackList[this.currentTrack];
-            this.audioElement.play();
             document.getElementById('clickable-area').style.display = 'none';
+            if (this.audioElement.paused) {
+                this.audioElement.play();
+            }
         });
 
     }

@@ -22,8 +22,8 @@ export class MatchThree {
                 this.nextMonster();
             }
         });
-        
-
+        window.addEventListener('resize', this.checkOrientation);
+        window.addEventListener('load', this.checkOrientation);
     }
     async swap(firstElementPosition, secondElementPosition) {
         const swapStates = this.game.swap(firstElementPosition, secondElementPosition); // массив матриц до и после сборки ряда
@@ -47,6 +47,15 @@ export class MatchThree {
     retryGame() {
         this.game = new Game(rowsCount, columnCount, titleCount);
         this.grid = new Grid(this.wrap, this.game.matrix);
+    }
+
+    checkOrientation() {
+        const message = document.getElementById('message');
+        if (window.innerHeight > window.innerWidth) {
+            message.style.display = 'flex';
+        } else {
+            message.style.display = 'none';
+        }
     }
     
 }

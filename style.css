@@ -3,7 +3,12 @@
     padding: 0;
 }
 
+::-webkit-scrollbar {
+    width: 0;
+}
+
 body {
+    position: fixed;
     height: 100hv;
     display: flex;
     align-items: center;
@@ -28,6 +33,8 @@ body {
     grid-template-areas: 'a e c' 'b e d';
     width: 90vw;
     justify-items: center;
+    justify-content: center;
+    align-items: center;
     justify-content: center;
     gap: 0 50px;
 }
@@ -335,8 +342,8 @@ body {
 }
 
 .damageEffectMonsterOne {
-    top: 50%;
-    left: 170px;
+    top: 56%;
+    left: 190px;
     animation: damageEffect 0.5s ease-in-out forwards;
 }
 
@@ -361,7 +368,7 @@ body {
 .deadMessage {
     position: absolute;
     margin: auto;
-    width: 71%;
+    width: 90vw;
     height: 80%;
     background-color: #880808;
     border-radius: 20px;
@@ -383,8 +390,8 @@ body {
     }
 
     100% {
-        width: 71%;
-        height: 80%;
+        width: 97%;
+        height: 85%;
         opacity: 1;
     }
 
@@ -404,16 +411,201 @@ body {
 
 #clickable-area {
     width: 100%;
-    height:100%;
+    height: 100%;
     position: absolute;
 }
 
-@media screen  and (max-width:1350px) and (max-height: 800px){
-    .wrap{ 
-        max-width: 60vmin;
-        max-height: 60vmin;
+@media screen and (max-width:1350px) {
+
+    .wrap {
+        max-width: 30vmax;
+        max-height: 30vmax;
     }
-    .healthPointBGPlayer{
-        max-width: 60vmin;
+
+    .healthPointBGPlayer {
+        max-width: 30vmax;
     }
+
+    .healthPointBGMonsterOne {
+        max-width: 30vmax;
+    }
+
+    .playerShape {
+        height: 30vmax;
+        width: 12.5vmax;
+        background-position: 0 10vmax;
+    }
+
+    .playerMagicAttack {
+        width: 35vmax;
+        height: 3.1vmax;
+    }
+
+    .monsterOneContainer {
+        height: 20vmax;
+        width: 20vmax;
+    }
+
+    .monsterOneShape {
+        height: 90%;
+        /* Увеличьте высоту для лучшего заполнения */
+        width: 100%;
+        /* Полная ширина */
+        margin-top: 26%;
+    }
+
+    .monsterOneShoot {
+        margin-top: 6.2vmax;
+        height: 17vmax;
+        background-position: 8.4vmax;
+    }
+
+
+    @keyframes skeletonAppearance {
+        0% {
+            background-position: 8.8vmax;
+        }
+
+        100% {
+            background-position: -12.5vmax;
+        }
+    }
+
+    .monsterOneArrow {
+        width: 9.4vmax;
+        height: 2.1vmax;
+        left: 5.9vmax;
+        top: 10vmax;
+    }
+
+    @keyframes shoot {
+        0% {
+            opacity: 1;
+        }
+
+        99% {
+            left: -15vmax;
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .damageEffect {
+        width: 3vmax;
+        height: 3vmax;
+    }
+
+    .damageEffectPlayer {
+        right: 3.5vmax;
+    }
+
+    .damageEffectMonsterOne {
+        top: 60%;
+        left: 13.2vmax;
+    }
+
+
+}
+
+@media screen and (max-width:1250px) {
+    .deadMessage {
+        top: 10%
+    }
+}
+
+@media screen and (max-height:660px) {
+    .deadMessage {
+        top: 10%;
+    }
+
+    @keyframes deadMessage {
+        0% {
+            width: 10%;
+            height: 12%;
+            opacity: 0;
+        }
+
+        100% {
+            width: 97vmax;
+            height: 89vh;
+            opacity: 1;
+        }
+
+    }
+}
+
+@media screen and (max-height:490px) {
+
+    .score {
+        margin-bottom: 15px;
+        font-size: 36px;
+    }
+
+    .deadMessage {
+        top: 13%;
+        font-size: 80px;
+    }
+
+    @keyframes deadMessage {
+        0% {
+            width: 10%;
+            height: 12%;
+            opacity: 0;
+        }
+
+        100% {
+            width: 97vmax;
+            height: 85vh;
+            opacity: 1;
+        }
+
+    }
+
+    .retryButton {
+        width: 20%;
+        height: 20%;
+    }
+}
+
+@media screen and (max-height:400px) {
+
+    .deadMessage {
+        top: 13%;
+    }
+
+    @keyframes deadMessage {
+        0% {
+            width: 10%;
+            height: 12%;
+            opacity: 0;
+        }
+
+        100% {
+            width: 97vmax;
+            height: 86vh;
+            opacity: 1;
+        }
+
+    }
+
+}
+
+#message {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
 }
